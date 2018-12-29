@@ -89,14 +89,18 @@ WSGI_APPLICATION = 'ttsx.wsgi.application'
 
 # 配置连接mysql数据库
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ttsx',
-        # 'HOST': '47.98.219.100',
-        'HOST': 'localhost',
-        'PORT': 3306,
-        'USER': 'root',
-        'PASSWORD': '123456',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'ttsx',
+    #     # 'HOST': '47.98.219.100',
+    #     'HOST': 'localhost',
+    #     'PORT': 3306,
+    #     'USER': 'root',
+    #     'PASSWORD': '123456',
+    # }
+        'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

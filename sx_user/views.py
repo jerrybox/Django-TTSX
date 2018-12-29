@@ -37,7 +37,7 @@ def register(request):
         return HttpResponseRedirect(reverse('user:login'))
 
 
-# 登陆
+# 登录
 def login(request):
     if request.method == 'GET':
         return render(request, 'login.html')
@@ -46,9 +46,12 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('pwd')
         data = {}
+        
         # 验证信息是否填写完整
         if not all([username, password]):
             data['msg'] = '请填写完整的用户名或密码'
+            return render(request, 'login.html', data)
+
         # 验证用户是否注册
         if UserModel.objects.filter(username=username).exists():
             user = UserModel.objects.get(username=username)

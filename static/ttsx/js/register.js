@@ -6,7 +6,7 @@ $(function(){
 	var error_email = false;
 	var error_check = false;
 
-
+    
 	$('#user_name').blur(function() {
 		check_user_name();
 	});
@@ -105,7 +105,7 @@ $(function(){
 	}
 
 
-	$('#reg_form').submit(function() {
+	$('.reg_sub input').click(function() {
 		check_user_name();
 		check_pwd();
 		check_cpwd();
