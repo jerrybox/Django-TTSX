@@ -10,14 +10,13 @@ $("input[name$='username']").val().length
 ```
 
 
-
 # Python:
 ---------------------------
 
 ```
 {% if msg %}
 	<div class="login_error">{{ msg }}</div>
-{% endif}
+{% endif %}
 ```
 
 
@@ -34,6 +33,19 @@ pip install -r requirements.txt
 python manage.py createsuperuser
 admin
 password123
+```
+
+
+# Git
+---------------------------
+
+```
+git rm -r --cache **/__pycache__
+```
+
+.gitignore
+```
+**/__pycache__
 ```
 
 # Test
