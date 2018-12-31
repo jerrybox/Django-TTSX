@@ -15,4 +15,6 @@ class CartInfo(models.Model):
 
     class Meta:
         db_table = "sx_cart"
-
+        app_label = 'sx_shopping'
+        verbose_name = '购物车'
+        verbose_name_plural = '购物车'

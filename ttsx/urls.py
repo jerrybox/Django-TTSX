@@ -15,12 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib.staticfiles.urls import static
+from django.contrib import admin
 
 from ttsx import settings
 
 urlpatterns = [
+    # Django admin
+    url(r'^admin/', admin.site.urls),
     # 后台管理路由
-    url(r'^admin/', include('ttsxAdmin.urls', namespace='admin')),
+    # url(r'^admin/', include('ttsxAdmin.urls', namespace='admin')),
     # 用户中心路由
     url(r'^user/', include('sx_user.urls', namespace='user')),
     # 商城展示路由

@@ -8,7 +8,9 @@ class ArticleCategory(models.Model):
 
     class Meta:
         db_table = "sx_kind"
-
+        app_label = 'sx_store'
+        verbose_name = '生鲜种类'
+        verbose_name_plural = '生鲜种类'
 
 # 创建商品属性模型
 class GoodsValue(models.Model):
@@ -24,4 +26,6 @@ class GoodsValue(models.Model):
 
     class Meta:
         db_table = "sx_goods"
-
+        app_label = 'sx_store'
+        verbose_name = '生鲜'
+        verbose_name_plural = '生鲜'
