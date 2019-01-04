@@ -49,18 +49,18 @@
 			<h3 class="fl" id="model01">新鲜水果</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good1 in fresh_fruit %}
+				{% for good1 in fresh_fruit.goods %}
 				<a href="#">{{ good1.g_name }}</a>
 				{% endfor %}
 			</div>
-			<a href="{% url 'store:list' %}" class="goods_more fr" id="fruit_more">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ fresh_fruit.type }}" class="goods_more fr" id="fruit_more">查看更多 ></a>
 		</div>
 
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner01.jpg' %}"></div>
 			<ul onclick="subgoods({{ goods.id }})" class="goods_list fl">
-				{% for good1 in fresh_fruit %}
+				{% for good1 in fresh_fruit.goods %}
 				<li>
 					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good1.id }}">{{ good1.g_name }}</a></h4>
 					<a href="{% url 'shopping:detail' %}?g_id={{ good1.id }}"><img src="/media/{{ good1.g_img }}"></a>
@@ -77,20 +77,20 @@
 			<h3 class="fl" id="model02">海鲜水产</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good2 in seafood_aquaculture %}
-				<a href="#">{{ good2.g_name }}</a>
+				{% for good2 in seafood_aquaculture.goods %}
+				<a href="{% url 'shopping:detail' %}?g_id={{ good2.id }}">{{ good2.g_name }}</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ seafood_aquaculture.type }}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner02.jpg' %}"></div>
 			<ul class="goods_list fl">
-				{% for good2 in seafood_aquaculture %}
+				{% for good2 in seafood_aquaculture.goods %}
 				<li>
-					<h4><a href="#">{{ good2.g_name }}</a></h4>
-					<a href="#"><img src="/media/{{ good2.g_img }}"></a>
+					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good2.id }}">{{ good2.g_name }}</a></h4>
+					<a href="{% url 'shopping:detail' %}?g_id={{ good2.id }}"><img src="/media/{{ good2.g_img }}"></a>
 					<div class="prize">¥ {{ good2.g_price }}</div>
 				</li>
 				{% endfor %}
@@ -103,20 +103,20 @@
 			<h3 class="fl" id="model03">猪牛羊肉</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good3 in red_meat %}
-				<a href="#">{{ good3.g_name }}</a>
+				{% for good3 in red_meat.goods %}
+				<a href="{% url 'shopping:detail' %}?g_id={{ good3.id }}">{{ good3.g_name.goods }}</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ red_meat.type }}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner03.jpg' %}"></div>
 			<ul class="goods_list fl">
-				{% for good3 in red_meat %}
+				{% for good3 in red_meat.goods %}
 				<li>
-					<h4><a href="#">{{ good3.g_name }}</a></h4>
-					<a href="#"><img src="/media/{{ good3.g_img }}"></a>
+					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good3.id }}">{{ good3.g_name }}</a></h4>
+					<a href="{% url 'shopping:detail' %}?g_id={{ good3.id }}"><img src="/media/{{ good3.g_img }}"></a>
 					<div class="prize">¥ {{ good3.g_price }}</div>
 				</li>
 				{% endfor %}
@@ -129,20 +129,20 @@
 			<h3 class="fl" id="model04">禽类蛋品</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good4 in poultry_egg %}
-				<a href="#">{{ good4.g_name }}</a>
+				{% for good4 in poultry_egg.goods %}
+				<a href="{% url 'shopping:detail' %}?g_id={{ good4.id }}">{{ good4.g_name }}</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ poultry_egg.type }}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner04.jpg' %}"></div>
 			<ul class="goods_list fl">
-				{% for good4 in poultry_egg %}
+				{% for good4 in poultry_egg.goods %}
 				<li>
-					<h4><a href="#">{{ good4.g_name }}</a></h4>
-					<a href="#"><img src="/media/{{ good4.g_img }}"></a>
+					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good4.id }}">{{ good4.g_name }}</a></h4>
+					<a href="{% url 'shopping:detail' %}?g_id={{ good4.id }}"><img src="/media/{{ good4.g_img }}"></a>
 					<div class="prize">¥ {{ good4.g_price }}</div>
 				</li>
 				{% endfor %}
@@ -155,20 +155,20 @@
 			<h3 class="fl" id="model05">新鲜蔬菜</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good5 in green_goods %}
-				<a href="#">{{ good5.g_name }}</a>
+				{% for good5 in green_goods.goods %}
+				<a href="{% url 'shopping:detail' %}?g_id={{ good5.id }}">{{ good5.g_name }}</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ green_goods.type }}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner05.jpg' %}"></div>
 			<ul class="goods_list fl">
-				{% for good5 in green_goods %}
+				{% for good5 in green_goods.goods %}
 				<li>
-					<h4><a href="#">{{ good5.g_name }}</a></h4>
-					<a href="#"><img src="/media/{{ good5.g_img }}"></a>
+					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good5.id }}">{{ good5.g_name }}</a></h4>
+					<a href="{% url 'shopping:detail' %}?g_id={{ good5.id }}"><img src="/media/{{ good5.g_img }}"></a>
 					<div class="prize">¥ {{ good5.g_price }}</div>
 				</li>
 				{% endfor %}
@@ -181,20 +181,20 @@
 			<h3 class="fl" id="model06">速冻食品</h3>
 			<div class="subtitle fl">
 				<span>|</span>
-				{% for good6 in quick_frozen %}
-				<a href="#">{{ good6.g_name }}</a>
+				{% for good6 in quick_frozen.goods %}
+				<a href="{% url 'shopping:detail' %}?g_id={{ good6.id }}">{{ good6.g_name }}</a>
 				{% endfor %}
 			</div>
-			<a href="#" class="goods_more fr">查看更多 ></a>
+			<a href="{% url 'store:list' %}?gtype_id={{ quick_frozen.type }}" class="goods_more fr">查看更多 ></a>
 		</div>
 
 		<div class="goods_con clearfix">
 			<div class="goods_banner fl"><img src="{% static 'ttsx/images/banner06.jpg' %}"></div>
 			<ul class="goods_list fl">
-				{% for good6 in quick_frozen %}
+				{% for good6 in quick_frozen.goods %}
 				<li>
-					<h4><a href="#">{{ good6.g_name }}</a></h4>
-					<a href="#"><img src="/media/{{ good6.g_img }}"></a>
+					<h4><a href="{% url 'shopping:detail' %}?g_id={{ good6.id }}">{{ good6.g_name }}</a></h4>
+					<a href="{% url 'shopping:detail' %}?g_id={{ good6.id }}"><img src="/media/{{ good6.g_img }}"></a>
 					<div class="prize">¥ {{ good6.g_price }}</div>
 				</li>
 				{% endfor %}

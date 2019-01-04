@@ -17,7 +17,7 @@
 				</ul>
 			</div>
 			<ul class="navlist fl">
-				<li><a href="">首页</a></li>
+				<li><a href="/">首页</a></li>
 				<li class="interval">|</li>
 				<li><a href="">手机生鲜</a></li>
 				<li class="interval">|</li>
@@ -37,7 +37,7 @@
 			<div class="new_goods">
 				<h3>新品推荐</h3>
 				<ul>
-					{% for tj in tj_goods %}
+					{% for tj in tj_goods.goods %}
 					<li>
 						<a href="#"><img src="/media/{{ tj.g_img }}"></a>
 						<h4><a href="#">{{ tj.g_name }}</a></h4>
@@ -71,13 +71,17 @@
 			</ul>
 
 			<div class="pagenation">
-				<a href="#"><上一页</a>
-				<a href="#" class="active">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">下一页></a>
+				<a href="?gtype_id={{gtype_id}}&page=1">&laquo; 首页</a>
+                {% if goods.has_previous %}
+                    <a href="?gtype_id={{gtype_id}}&page={{ goods.previous_page_number }}">上一页</a>
+                {% endif %}
+                <span class="active">
+                    Page {{ goods.number }} of {{ goods.paginator.num_pages }}.
+                </span>
+                {% if goods.has_next %}
+                    <a href="?gtype_id={{gtype_id}}&page={{ goods.next_page_number }}">下一页</a>
+                {% endif %}
+                <a href="?gtype_id={{gtype_id}}&page={{ goods.paginator.num_pages }}">尾页 &raquo;</a>
 			</div>
 		</div>
 	</div>

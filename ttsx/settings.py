@@ -26,7 +26,7 @@ SECRET_KEY = 'u186-+9k+tlik!tpm^jdf6-0tie55(zm-fd3xkd&bv20c)81#e'
 # 部署上线时DEBUG 设置为 False
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
