@@ -12,7 +12,7 @@
 				<span></span>			
 				<ul class="subnav">
 					{% for k in kinds %}
-					<li><a href="#" class="fruit">{{ k.kind }}</a></li>
+					<li><a href="{% url 'store:list' %}?gtype_id={{ k.id }}" class="fruit">{{ k.kind }}</a></li>
 					{% endfor %}
 				</ul>
 			</div>
@@ -47,17 +47,17 @@
 			<div class="goods_num clearfix">
 				<div class="num_name fl">数 量：</div>
 				<div class="num_add fl">
-					<input type="text" class="num_show_{{ goods.id }} fl" value="0">
-					<a href="javascript:;" onclick="addgoods({{ goods.id }})" class="add fr">+</a>
-					<a href="javascript:;" onclick="subgoods({{ goods.id }})" class="minus fr">-</a>
+					<input type="text" class="num_show fl" value="1">
+					<a href="javascript:;" onclick="addgoods();" class="add fr">+</a>
+					<a href="javascript:;" onclick="subgoods();" class="minus fr">-</a>
 				</div>
-				<div class="num_name fl">&nbsp&nbsp库存:<em>{{ goods.g_repertory }}</em></div>
+				<div class="num_name fl">&nbsp&nbsp库存:<em id="repertory">{{ goods.g_repertory }}</em></div>
 
 			</div>
-			<div class="total">总价：<em id="price{{ goods.id }}" >{{ goods.g_price }}</em> <em>元</em></div>
+			<div class="total">总价：<em id="price_total" >{{ goods.g_price }}</em> <em>元</em></div>
 			<div class="operate_btn">
-				<a href="{% url 'shopping:buycart' %}" class="buy_btn">立即购买</a>
-				<a href="javascript:;"  class="add_cart" id="add_cart">加入购物车</a>
+				<a href="{% url 'shopping:buycart' %}" id= {{ goods.id }} class="buy_btn">立即购买</a>
+				<a href="javascript:;"  onclick="add_cart({{ goods.id }});" class="add_cart" id="add_cart">加入购物车</a>
 			</div>
 		</div>
 	</div>
@@ -68,16 +68,17 @@
 			<div class="new_goods">
 				<h3>新品推荐</h3>
 				<ul>
+					{% for good in tj_goods %}
 					<li>
-						<a href="#"><img src="images/goods/goods001.jpg"></a>
-						<h4><a href="#">进口柠檬</a></h4>
-						<div class="prize">￥3.90</div>
+						<a href="{% url 'shopping:detail' %}?g_id={{ good.id }}">
+							<img src="/media/{{ good.g_img }}">
+						</a>
+						<h4>
+							<a href="{% url 'shopping:detail' %}?g_id={{ good.id }}">{{ good.g_name }}</a>
+						</h4>
+						<div class="prize">￥{{ good.g_price }}</div>
 					</li>
-					<li>
-						<a href="#"><img src="images/goods/goods002.jpg"></a>
-						<h4><a href="#">玫瑰香葡萄</a></h4>
-						<div class="prize">￥16.80</div>
-					</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
@@ -100,7 +101,7 @@
 {% endblock %}
 
 {% block extJS %}
-	<script type="text/javascript" src="{% static 'ttsx/common/functions.js' %}"></script>
+	<script type="text/javascript" src="{% static 'ttsx/js/calculate.js' %}"></script>
 	<script type="text/javascript">
 		var $add_x = $('#add_cart').offset().top;
 		var $add_y = $('#add_cart').offset().left;

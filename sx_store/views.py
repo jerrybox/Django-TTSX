@@ -69,4 +69,3 @@ def list(request):
             'tj_goods': tj_goods
         }
         return render(request, 'list.html', data)
-

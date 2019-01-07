@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 
 from sx_shopping.models import CartInfo
 from sx_store.models import GoodsValue, ArticleCategory
+from sx_store.views import recommend
 
 
 # 商品详情
@@ -15,26 +16,30 @@ def detail(request):
         goods = GoodsValue.objects.filter(id=g_id).first()
 
         # 拿到的新品推荐商品
-        # pass
+        tj_goods = recommend(goods.gtype.id, 2, '-g_price')
 
         data = {
             'kinds': kinds,
-            'goods': goods
+            'goods': goods,
+            'tj_goods': tj_goods['goods'],
         }
         return render(request, 'detail.html', data)
 
+    if request.method == 'GPOST':
+        pass
 
 # 增加商品数量
 def add_goods(request):
     if request.method == 'POST':
         user = request.user
+        num = int(request.POST.get('num', 1))
         data = {}
         if user.id:
             goods_id = request.POST.get('goods_id')
             # 验证当前登录用户是否对同一商品进行添加操作, 如果有则继续添加
             cart = CartInfo.objects.filter(user=user, goods_id=goods_id).first()
             if cart:
-                cart.count += 1
+                cart.count += num
                 cart.save()
                 data['count'] = cart.count
                 # 计算单个商品总价
@@ -42,7 +47,7 @@ def add_goods(request):
             else:
                 # 验证当前登陆用户有没有添加商品到购物车中，如果没有则创建
                 CartInfo.objects.create(user=user, goods_id=goods_id)
-                data['count'] = 1
+                data['count'] = num
             data['code'] = '200'
             data['msg'] = '请求成功'
             return JsonResponse(data)

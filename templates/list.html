@@ -74,11 +74,11 @@
 				<a href="?gtype_id={{gtype_id}}&page=1">&laquo; 首页</a>
                 {% if goods.has_previous %}
                     <a href="?gtype_id={{gtype_id}}&page={{ goods.previous_page_number }}">上一页</a>
+                    <a href="?gtype_id={{gtype_id}}&page={{ goods.previous_page_number }}">{{ goods.previous_page_number }}</a>
                 {% endif %}
-                <span class="active">
-                    Page {{ goods.number }} of {{ goods.paginator.num_pages }}.
-                </span>
+                    <a href="#" class="active">{{ goods.number }}</a>
                 {% if goods.has_next %}
+                    <a href="?gtype_id={{gtype_id}}&page={{ goods.next_page_number }}">{{ goods.next_page_number }}</a>
                     <a href="?gtype_id={{gtype_id}}&page={{ goods.next_page_number }}">下一页</a>
                 {% endif %}
                 <a href="?gtype_id={{gtype_id}}&page={{ goods.paginator.num_pages }}">尾页 &raquo;</a>

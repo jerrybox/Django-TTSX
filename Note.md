@@ -9,10 +9,30 @@ Markdown [在线预览](http://mahua.jser.me/ "Markdown 在线预览")
 --------------------------
 
 jQuery 参考手册 - [选择器](http://www.w3school.com.cn/jquery/jquery_ref_selectors.asp "选择器")  
-	
+```
+第一步 要确保selector选取到了正确element
+```
 
 ```jquery
 $("input[name$='username']").val().length
+```
+```
+//自动转化类型直接比较
+0 > $('.num_show_7').val()
+
+"2" <= "1600"
+false
+
+```
+```
+$('.num_show_7').val(1)
+$('.num_show_7').val() // '1'
+$('.num_show_7').val() + 1 // '11'
+```
+```
+text() - 设置或返回所选元素的文本内容
+html() - 设置或返回所选元素的内容（包括 HTML 标记）
+val() - 设置或返回表单字段的值
 ```
 
 
@@ -24,6 +44,9 @@ $("input[name$='username']").val().length
 	<div class="login_error">{{ msg }}</div>
 {% endif %}
 
+<!-->tj_goods = {'type': 1, 'good':[1, 2, 3]}  jinjia 模板里面可以通过.key获取value</-->
+{% for tj in tj_goods.goods %}  
+{% endfor %}
 ```
 
 jinja url 传参方式：
@@ -118,5 +141,8 @@ jerry2@ttsx.com
 评论
 商品描述
 ttsxadmin
+搜索
+验证码
+库存实时更新
 
 
