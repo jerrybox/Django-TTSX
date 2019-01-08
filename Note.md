@@ -34,7 +34,10 @@ text() - 设置或返回所选元素的文本内容
 html() - 设置或返回所选元素的内容（包括 HTML 标记）
 val() - 设置或返回表单字段的值
 ```
-
+```
+typeof all_check
+console.dir( all_check)
+```
 
 # Python:
 ---------------------------

@@ -52,28 +52,6 @@ function tatal_price(quantity_new) {
 }
 
 
-// 添加到购物车
-function add_cart(id) {
-	var num = $('.num_show').val();
-    var csrf = $('input[name="csrfmiddlewaretoken"]').val();
-    $.ajax({
-        url:'/shopping/addgoods/',
-        type:'POST',
-        data: {'goods_id': id, 'num':num},
-        dataType:'json',
-        headers:{'X-CSRFToken':csrf},
-        success:function (data) {
-            if (data.code == '200') {
-                alert('已添加到购物车！')
-                console.log(data);
-            }
-        },
-        error:function (data) {
-            console.log(data)
-        }
-    })
-}
-
 
 // 添加到购物车
 function add_cart(id) {
@@ -102,7 +80,7 @@ function add_cart(id) {
 function buy_cart() {
 	var num = $('.num_show').val();
     var csrf = $('input[name="csrfmiddlewaretoken"]').val();
-    var redirect_url = $('.buy_btn').attr('href');
+    var redirect_url = $('.buy_btn').attr('dir_url');
     var id = $('.buy_btn').attr('id');
 
     $.ajax({
