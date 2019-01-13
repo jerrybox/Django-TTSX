@@ -1,5 +1,7 @@
+import json
+
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.core.urlresolvers import reverse
 
 from sx_shopping.models import CartInfo
@@ -8,12 +10,19 @@ from sx_user.models import UserModel
 
 # 提交订单
 def place_order(request):
+    """
+    购物车选好商品后，进入此提交订单页面
+    """
     if request.method == 'GET':
         user = request.user
+        goods_id_list = request.GET.get('goods_id_list', '')
+        goods_id_list = json.loads(goods_id_list).get('goods_id', [])
+
         carts = CartInfo.objects.filter(user=user)
+        carts = [carts.get(goods_id=goods_id) for goods_id in goods_id_list]
+
         data = {'carts': carts}
         return render(request, 'place_order.html', data)
-
 
 # 个人信息
 def user_center_info(request):

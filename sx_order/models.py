@@ -19,6 +19,7 @@ class OrderModel(models.Model):
         verbose_name = '订单'
         verbose_name_plural = '订单'
 
+
 # 创建订单详情表模型
 class OrderDetailModel(models.Model):
     goods = models.ForeignKey(GoodsValue)        # 关联商品
@@ -32,6 +33,7 @@ class OrderDetailModel(models.Model):
         app_label = 'sx_order'
         verbose_name = '订单条目'
         verbose_name_plural = '订单条目'
+
 
 # 创建销量统计表模型
 class Sales(models.Model):

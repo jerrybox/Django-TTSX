@@ -56,7 +56,7 @@ def list(request):
 
         kinds = ArticleCategory.objects.all()
 
-        goods_all = GoodsValue.objects.filter(gtype_id=gtype_id, isDelete=0)
+        goods_all = GoodsValue.objects.filter(gtype_id=gtype_id, isDelete=0).order_by('id')
         paginator = Paginator(goods_all, 5)
         goods = paginator.page(page_num)
 

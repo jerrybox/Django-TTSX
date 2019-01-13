@@ -24,9 +24,7 @@ def detail(request):
             'tj_goods': tj_goods['goods'],
         }
         return render(request, 'detail.html', data)
-
-    if request.method == 'GPOST':
-        pass
+        
 
 # 增加商品数量
 def add_goods(request):
@@ -46,7 +44,7 @@ def add_goods(request):
                 data['goods_price'] = round(cart.goods.g_price * cart.count, 2)
             else:
                 # 验证当前登陆用户有没有添加商品到购物车中，如果没有则创建
-                CartInfo.objects.create(user=user, goods_id=goods_id)
+                CartInfo.objects.create(user=user, goods_id=goods_id, count=num)
                 data['count'] = num
             data['code'] = '200'
             data['msg'] = '请求成功'

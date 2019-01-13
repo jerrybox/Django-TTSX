@@ -15,6 +15,7 @@ class ArticleCategory(models.Model):
         verbose_name = '生鲜种类'
         verbose_name_plural = '生鲜种类'
 
+
 # 创建商品属性模型
 class GoodsValue(models.Model):
     g_name = models.CharField(max_length=20)                  # 商品名称
