@@ -5,13 +5,15 @@ from sx_order.models import OrderModel, OrderDetailModel, Sales
 
 
 class OrderModelAdmin(admin.ModelAdmin):
-	fields = ("o_id", "o_user", "o_pay", "o_total", "o_address",)
-	list_display = ("o_id", "o_user", "o_date", "o_pay", "o_total", "o_address",)
+	fields = ("o_id", "o_user", "o_status", "o_total", "o_address",)
+	readonly_fields = ("o_id", 'o_date_created', 'o_date_updated')
+	list_display = ("o_user", "o_status", "o_total", "o_address",)
 
 
 class OrderDetailModelAdmin(admin.ModelAdmin):
-	fields = ("goods", "order", "price", "count", "isTrue",) 
-	list_display = ("goods", "order", "price", "count", "isTrue",) 
+	fields = ("good_id", "order", "price", "count", "isTrue",) 
+	readonly_fields = ("good_id", )
+	list_display = ("order", "price", "count", "isTrue",) 
 
 
 class SalesAdmin(admin.ModelAdmin):

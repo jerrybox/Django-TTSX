@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import json
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -148,3 +149,25 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
 # 设置media路径
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Secret things: passwords, access keys, etc.
+with open(BASE_DIR + "/ttsx.auth.json") as auth_file:
+    AUTH_TOKENS = json.load(auth_file)
+
+# 支付相关配置
+PAYMENT_PROCESSOR_CONFIG = {
+    'alipay': {
+        'mode': 'sandbox',
+        'app_id': int(AUTH_TOKENS['ALIPAY_APP_ID']),
+        'app_private_key_path': BASE_DIR + '/keys/app_private_key.pem',
+        'alipay_public_key': BASE_DIR + '/keys/alipay_public_key.pem'
+    },
+}
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
+

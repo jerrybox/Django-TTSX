@@ -4,7 +4,7 @@
 {% block title %}天天生鲜-提交订单{% endblock %}
 {% block extCSS %}{% endblock %}
 
-{% block abr %}提交订单{% endblock %}
+{% block abr %}订单详情{% endblock %}
 {% block content %}
 	<h3 class="common_title">确认收货地址</h3>
 
@@ -45,12 +45,31 @@
 		{% for cart in carts %}
 		<ul class="goods_list_td clearfix">
 			<li class="col01">1</li>			
-			<li class="col02"><img src="/media/{{ cart.goods.g_img }}"></li>
-			<li class="col03">{{ cart.goods.g_name }}</li>
-			<li class="col04">{{ cart.goods.g_unit }}</li>
-			<li class="col05">{{ cart.goods.g_price }}元</li>
+			<li class="col02">
+				{% if cart.get_good != "Off shelf" %}
+				<img src="/media/{{ cart.get_good.g_img }}">
+				{% else %}
+				<img src="/media/{{ cart.get_good.g_img }}">
+				{% endif %}
+			</li>
+			<li class="col03">
+				{% if cart.get_good != "Off shelf" %}
+				{{ cart.get_good.g_name }}
+				{% else %}
+				"Off shelf"
+				{% endif %}
+			</li>
+			<li class="col04">
+				{% if cart.get_good != "Off shelf" %}
+				{{ cart.get_good.g_unit }}
+				{% else %}
+				"Off shelf"
+				{% endif %}
+			</li>
+			
+			<li class="col05">{{ cart.price }}元</li>
 			<li class="col06">{{ cart.count }}</li>
-			<li class="col07"><em id="price{{ cart.goods.id }}" ></em> <em>元</em></li>
+			<li class="col07"><em id="price{{ cart.get_good.id }}" ></em> <em>元</em></li>
 		</ul>
 		{% endfor %}
 
@@ -65,9 +84,14 @@
 			<div class="total_pay">实付款：<b id="payment" ></b><b>元</b></div>
 		</div>
 	</div>
-
+{% csrf_token %}
 	<div class="order_submit clearfix">
-		<a href="https://auth.alipay.com/login/index.htm?goto=https%3A%2F%2Fwww.alipay.com%2F" id="order_btn">提交订单</a>
+		<div class="pay_submit clearfix">
+			<a href="{{ aipay_url }}"  id="order_btn">去支付</a>
+	    </div>
+		<div class="order_cancel clearfix">
+			<a href="{{ cancel_url }}" id="cancel_btn">取消订单</a>
+		</div>
 	</div>	
 {% endblock %}
 
@@ -81,19 +105,5 @@
 
 {% block extJS %}
 	<script type="text/javascript" src="{% static 'ttsx/common/functions.js' %}"></script>
-	<script type="text/javascript">
-		$('#order_btn').click(function() {
-			localStorage.setItem('order_finish',2);
-
-			$('.popup_con').fadeIn('fast', function() {
-
-				setTimeout(function(){
-					$('.popup_con').fadeOut('fast',function(){
-						window.location.href = 'index.html';
-					});	
-				},3000)
-				
-			});
-		});
-	</script>
+	<script type="text/javascript" src="{% static 'ttsx/ttsx/order.js' %}"></script>
 {% endblock %}

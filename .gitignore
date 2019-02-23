@@ -8,6 +8,8 @@ dist/
 **/__pycache__/
 *.so
 *~
+keys/
+ttsx.auth.json
 
 # due to using tox and pytest
 .tox

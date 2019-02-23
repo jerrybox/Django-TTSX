@@ -441,8 +441,9 @@ html,body{height:100%}
 .total_goods_count em,.total_goods_count b,.transit b,.total_pay b{font-size:14px;color:#ff4200;padding:0 5px;}
 
 .order_submit{width:1200px;margin:20px auto;}
-.order_submit a{width:160px;height:40px;line-height:40px;text-align:center;background-color:#47aa34;color:#fff;font-size:16px;display:block;float:right}
+.pay_submit a#order_btn{width:160px;height:40px;line-height:40px;text-align:center;background-color:#47aa34;color:#fff;font-size:16px;display:block;float:right}
 
+.order_cancel a#cancel_btn{width:160px;height:30px;line-height:30px;text-align:center;background-color:white;color:red;font-size:10px;display:block;float:right}
 
 .order_list_th{width:1198px;border:1px solid #ddd;background-color:#f7f7f7;margin:20px auto 0;}
 .order_list_th li{float:left;height:30px;line-height:30px}

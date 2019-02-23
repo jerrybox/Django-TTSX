@@ -11,8 +11,7 @@ from sx_user.models import UserTicketModel
 class UserMiddle(MiddlewareMixin):
     def process_request(self, request):
         # 需要登录验证的页面
-        need_login = ['/store/index/',
-                      '/store/list/',
+        need_login = ['/store/list/',
                       '/user/user_center_info/',
                       '/user/user_center_order/',
                       '/user/user_center_site/',
@@ -45,7 +44,7 @@ class UserMiddle(MiddlewareMixin):
                 if datetime.now() > user_ticket.out_time.replace(tzinfo=None):
                     return HttpResponseRedirect(reverse('user:login'))
                 else:
-                    # 必须不未登录状态下访问
+                    # 必须未登录状态下访问
                     if request.path in without_login:
                         referer_url = request.META.get('HTTP_REFERER')
                         if not referer_url:

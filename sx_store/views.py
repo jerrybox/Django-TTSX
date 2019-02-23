@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
+from django.views.decorators.cache import cache_page
 
 from sx_store.models import GoodsValue, ArticleCategory
 
@@ -29,10 +30,10 @@ def recommend(gtype_id, count, order_field=None):
 
 
 # 商城首页
+@cache_page(60 * 15)
 def index(request):
     # 首页水果展示
     if request.method == 'GET':
-
         data = {
             'fresh_fruit': recommend(1, 4, '-g_price'),
             'seafood_aquaculture': recommend(2, 4),
@@ -45,6 +46,7 @@ def index(request):
 
 
 # 商品列表
+@cache_page(60 * 5)
 def list(request):
     """
     TODO: 这应该对数据库查询结果（goods_all）进行缓存
