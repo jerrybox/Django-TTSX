@@ -148,6 +148,9 @@ USE_TZ = None
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
 
+# 部署时静态文件位置
+STATIC_ROOT = os.path.join(REPOSITORIE_ROOT, 'staticfiles')
+
 # 设置media路径
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(REPOSITORIE_ROOT, 'media')

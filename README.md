@@ -1,3 +1,3 @@
 # TTSX
 -----------------
-[DevOpsNote.md](./Note.md)
+[DevOpsNote.md](./docs/Note.md)
