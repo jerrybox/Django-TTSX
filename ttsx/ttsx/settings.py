@@ -16,6 +16,8 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# 项目根目录
+REPOSITORIE_ROOT = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -40,15 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 商城应用: 商店首页index.html,商品列表页list.html,
-    'sx_store',
+    'ttsx.sx_store',
     # 购物应用: 商品详情页detail.html, 购物车页cart.html
-    'sx_shopping',
+    'ttsx.sx_shopping',
     # 订单应用: 提交订单页place_order.html, 信息info/订单order/收货地址site
-    'sx_order',
+    'ttsx.sx_order',
     # 用户中心: 注册页register.html,登陆页login.html
-    'sx_user',
+    'ttsx.sx_user',
     # 后台管理
-    'ttsxAdmin',
+    'ttsx.ttsxAdmin',
 ]
 
 MIDDLEWARE = [
@@ -60,10 +62,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 设置中间件
-    'utils.UserAuthMiddleware.UserMiddle',
+    'ttsx.utils.UserAuthMiddleware.UserMiddle',
 ]
 
-ROOT_URLCONF = 'ttsx.urls'
+ROOT_URLCONF = 'ttsx.ttsx.urls'
 
 TEMPLATES = [
     {
@@ -82,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ttsx.wsgi.application'
+WSGI_APPLICATION = 'ttsx.ttsx.wsgi.application'
 
 
 # Database
@@ -101,7 +103,7 @@ DATABASES = {
     # }
         'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(REPOSITORIE_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -136,7 +138,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = None
 
 
 # Static files (CSS, JavaScript, Images)
@@ -148,10 +150,10 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR, 'static')]
 
 # 设置media路径
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(REPOSITORIE_ROOT, 'media')
 
 # Secret things: passwords, access keys, etc.
-with open(BASE_DIR + "/ttsx.auth.json") as auth_file:
+with open(REPOSITORIE_ROOT + "/config/ttsx.auth.json") as auth_file:
     AUTH_TOKENS = json.load(auth_file)
 
 # 支付相关配置
@@ -159,8 +161,8 @@ PAYMENT_PROCESSOR_CONFIG = {
     'alipay': {
         'mode': 'sandbox',
         'app_id': int(AUTH_TOKENS['ALIPAY_APP_ID']),
-        'app_private_key_path': BASE_DIR + '/keys/app_private_key.pem',
-        'alipay_public_key': BASE_DIR + '/keys/alipay_public_key.pem'
+        'app_private_key_path': REPOSITORIE_ROOT + '/keys/app_private_key.pem',
+        'alipay_public_key': REPOSITORIE_ROOT + '/keys/alipay_public_key.pem'
     },
 }
 

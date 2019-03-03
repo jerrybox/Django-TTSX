@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from sx_user import views
+from ttsx.sx_user import views
 
 urlpatterns = [
     # 注册

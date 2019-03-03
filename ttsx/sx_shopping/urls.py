@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from sx_shopping import views
+from ttsx.sx_shopping import views
 
 urlpatterns = [
     # 商品详情

@@ -5,8 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from sx_user.models import UserModel, UserTicketModel
-from utils.functions import get_ticket
+from ttsx.sx_user.models import UserModel, UserTicketModel
+from ttsx.utils.functions import get_ticket
 
 
 # 注册

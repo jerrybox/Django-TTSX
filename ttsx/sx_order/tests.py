@@ -1,7 +1,7 @@
 from django.test import TestCase
 
-from sx_user.models import UserModel, UserAddress
-from sx_order.models import OrderModel
+from ttsx.sx_user.models import UserModel, UserAddress
+from ttsx.sx_order.models import OrderModel
 
 # Create your tests here.
 

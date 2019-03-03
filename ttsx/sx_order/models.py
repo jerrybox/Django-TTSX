@@ -5,8 +5,8 @@ from django.db import models
 from django.utils.functional import cached_property
 from django.core.exceptions import ObjectDoesNotExist
 
-from sx_store.models import GoodsValue
-from sx_user.models import UserModel
+from ttsx.sx_store.models import GoodsValue
+from ttsx.sx_user.models import UserModel
 
 
 ORDER_STATUS_CHOICES= (

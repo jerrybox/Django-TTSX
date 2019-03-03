@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib.staticfiles.urls import static
 from django.contrib import admin
 
-from ttsx import settings
+from ttsx.ttsx import settings
 
 urlpatterns = [
     # Django admin
@@ -25,13 +25,13 @@ urlpatterns = [
     # 后台管理路由
     # url(r'^admin/', include('ttsxAdmin.urls', namespace='admin')),
     # 用户中心路由
-    url(r'^user/', include('sx_user.urls', namespace='user')),
+    url(r'^user/', include('ttsx.sx_user.urls', namespace='user')),
     # 商城展示路由
-    url(r'^store/', include('sx_store.urls', namespace='store')),
+    url(r'^store/', include('ttsx.sx_store.urls', namespace='store')),
     # 购物过程路由
-    url(r'^shopping/', include('sx_shopping.urls', namespace='shopping')),
+    url(r'^shopping/', include('ttsx.sx_shopping.urls', namespace='shopping')),
     # 订单路由
-    url(r'^order/', include('sx_order.urls', namespace='order')),
+    url(r'^order/', include('ttsx.sx_order.urls', namespace='order')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

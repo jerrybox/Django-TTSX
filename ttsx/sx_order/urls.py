@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 
-from sx_order import views
-from sx_order.alipayview import alipay_return, alipay_notify
+from ttsx.sx_order import views
+from ttsx.sx_order.alipayview import alipay_return, alipay_notify
 
 
 ALIPAY_URLS = [

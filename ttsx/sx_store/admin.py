@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from sx_store.models import ArticleCategory, GoodsValue
+from ttsx.sx_store.models import ArticleCategory, GoodsValue
 
 
 class ArticleCategoryAdmin(admin.ModelAdmin):

@@ -2,9 +2,9 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 
-from sx_shopping.models import CartInfo
-from sx_store.models import GoodsValue, ArticleCategory
-from sx_store.views import recommend
+from ttsx.sx_shopping.models import CartInfo
+from ttsx.sx_store.models import GoodsValue, ArticleCategory
+from ttsx.sx_store.views import recommend
 
 
 # 商品详情

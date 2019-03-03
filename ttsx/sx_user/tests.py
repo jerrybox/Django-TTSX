@@ -2,7 +2,7 @@ from django.test import TestCase
 
 from django.test import TestCase
 
-from sx_user.models import UserModel, UserAddress
+from ttsx.sx_user.models import UserModel, UserAddress
 
 
 # Create your tests here.

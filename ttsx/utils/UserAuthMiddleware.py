@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.utils.deprecation import MiddlewareMixin
 from django.core.urlresolvers import reverse
 
-from sx_user.models import UserTicketModel
+from ttsx.sx_user.models import UserTicketModel
 
 
 class UserMiddle(MiddlewareMixin):

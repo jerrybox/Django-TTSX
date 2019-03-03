@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.views.decorators.cache import cache_page
 
-from sx_store.models import GoodsValue, ArticleCategory
+from ttsx.sx_store.models import GoodsValue, ArticleCategory
 
 
 # 这里应该有一个商品推荐系统，可以接收一些限制条件

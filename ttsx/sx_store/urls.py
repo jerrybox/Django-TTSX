@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from sx_store import views
+from ttsx.sx_store import views
 
 urlpatterns = [
     # 商城首页

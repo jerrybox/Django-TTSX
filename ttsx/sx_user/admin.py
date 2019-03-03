@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from sx_user.models import UserModel, UserTicketModel, UserAddress
+from ttsx.sx_user.models import UserModel, UserTicketModel, UserAddress
 
 
 class UserModelAdmin(admin.ModelAdmin):

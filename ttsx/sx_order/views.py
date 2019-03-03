@@ -8,11 +8,11 @@ from django.db import transaction
 from alipay.aop.api.domain.AlipayTradePagePayModel import AlipayTradePagePayModel
 from alipay.aop.api.request.AlipayTradePagePayRequest import AlipayTradePagePayRequest
 
-from sx_shopping.models import CartInfo
-from sx_user.models import UserModel
-from sx_store.models import GoodsValue
-from sx_order.models import  OrderModel, OrderDetailModel
-from utils.functions import get_aliapy_client
+from ttsx.sx_shopping.models import CartInfo
+from ttsx.sx_user.models import UserModel
+from ttsx.sx_store.models import GoodsValue
+from ttsx.sx_order.models import  OrderModel, OrderDetailModel
+from ttsx.utils.functions import get_aliapy_client
 
 
 # 提交订单

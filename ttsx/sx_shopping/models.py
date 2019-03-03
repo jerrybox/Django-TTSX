@@ -1,7 +1,7 @@
 from django.db import models
 
-from sx_store.models import GoodsValue
-from sx_user.models import UserModel
+from ttsx.sx_store.models import GoodsValue
+from ttsx.sx_user.models import UserModel
 
 
 # 创建购物车模型

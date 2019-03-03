@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from sx_order.models import OrderModel, OrderDetailModel, Sales
+from ttsx.sx_order.models import OrderModel, OrderDetailModel, Sales
 
 
 class OrderModelAdmin(admin.ModelAdmin):
