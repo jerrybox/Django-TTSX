@@ -39,7 +39,7 @@ class OrderModel(models.Model):
     o_user = models.ForeignKey(UserModel)                           # 关联用户
     o_date_created = models.DateTimeField(verbose_name="Date Created", auto_now_add=True)  # 创建日期
     o_date_updated = models.DateTimeField(verbose_name="Date Updated", auto_now=True)      # 支付日期
-    o_status = models.CharField(max_length=120, default='NotPaid', choices= ORDER_STATUS_CHOICES)  # 付款属性
+    o_status = models.CharField(max_length=120, default='NotPaid', choices=ORDER_STATUS_CHOICES)  # 付款属性
     o_total = models.DecimalField(max_digits=6, decimal_places=2, default=0)   # 总价
     o_address = models.CharField(max_length=150, default="address")              # 收货地址
     o_freight = models.DecimalField(max_digits=6, decimal_places=2, default=0)
